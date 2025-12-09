@@ -92,9 +92,13 @@ cd CNN_siniflandirma
 pip install tensorflow matplotlib numpy
 jupyter notebook
 
+---
+
 Ardından ilgili model .ipynb dosyasını çalıştırarak eğitimi başlatabilirsiniz.
 
-📌 7. Sonuç ve Değerlendirme
+---
+
+## 📌 7. Sonuç ve Değerlendirme
 
 Küçük veri setlerinde basit CNN (Model 2) en iyi performansı verdi.
 
@@ -103,3 +107,5 @@ Transfer learning modeli (VGG16) orta düzeyde başarı sağladı.
 Model 3’te yapılan değişiklikler teoride faydalı olsa da veri setinin küçük olması sebebiyle aşırı öğrenmeye yol açtı.
 
 En iyi model Model 2 olmuştur.
+
+---
