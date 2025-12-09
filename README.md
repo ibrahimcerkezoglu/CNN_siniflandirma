@@ -51,58 +51,47 @@ sise/
 
 ---
 
-## 📌 4. Modellerin Açıklamaları
+### 📌 4. Modellerin Açıklamaları
 
-### **Model 1 – Transfer Learning (VGG16)**
-- ImageNet ağırlıkları ile başlatılmıştır.
-- Üst katmanlar çıkarılarak kendi sınıflarım için yeni Dense katmanları eklenmiştir.
-- Fine-tuning uygulanmamıştır.
-- En iyi doğruluk **~%59.3**
+#### Model 1 – Transfer Learning (VGG16)
+- ImageNet ağırlıkları ile başlatıldı, üst katmanlar çıkarılıp kendi Dense katmanlarım eklendi.
+- Fine-tuning yapılmadı.
+- Test doğruluğu: **%59.38**
 
----
-
-### **Model 2 – Basit CNN**
-- 3 adet Conv bloktan oluşan temel CNN.
-- Sıfırdan eğitildi.
+#### Model 2 – Basit CNN
+- 3 Conv bloklu, sıfırdan eğitilen temel CNN modeli.
 - Küçük veri setine en iyi uyumu gösterdi.
-- En iyi doğruluk **~%75.0**
+- Test doğruluğu: **%75.00** (en iyi model)
 
----
+#### Model 3 – Geliştirilmiş CNN + Veri Artırımı
+- Model 2 üzerinde şu değişiklikler yapıldı:
+  - Batch size değişti (32 → 16),
+  - Öğrenme oranı denendi (0.0003 ve 0.0005),
+  - Dropout artırıldı,
+  - `ImageDataGenerator` ile veri artırımı eklendi.
+- Test doğruluğu: **%37.50** (Model 2’nin gerisinde).
 
-### **Model 3 – Geliştirilmiş CNN + Veri Artırımı**
-Model 2 üzerinde aşağıdaki geliştirmeler yapıldı:
-
-- Batch size değiştirildi
-- Öğrenme oranı azaltıldı
-- Dropout oranı yükseltildi
-- `ImageDataGenerator` ile data augmentation eklendi:
-  - rotation_range=15  
-  - width/height shift 0.1  
-  - zoom_range=0.1  
-  - horizontal_flip=True  
-
-Performansı Model2’den düşük kalmıştır (**~%37.5**).  
-Sebep: veri setinin küçük olması + model karmaşıklığının artması.
 
 ---
 
 ## 📌 5. Deney Tablosu (Model 3)
 
-| Deney No | Batch Size | Filtre Sayısı | Dropout | LR | Veri Artırımı | Test Accuracy | Not |
-|---------|------------|---------------|---------|----|----------------|----------------|------|
-| 1 | 32 | 32–64–128 | 0.3 | 0.0005 | Hayır | %68 | Temel model |
-| 2 | 64 | 32–64–128 | 0.3 | 0.0005 | Evet | %74 | Veri artırımı iyileştirdi |
-| 3 | 64 | 64–128–256 | 0.4 | 0.0003 | Evet | %37.5 | Daha derin mimari overfit oldu |
+| Deney No | Batch Size | Filtre Sayısı | Dropout      | Öğrenme Oranı | Veri Artırımı | Test Doğruluğu | Not |
+|---------|------------|---------------|-------------|---------------|--------------|----------------|-----|
+| 1       | 32         | 32–64–128     | 0.25–0.40   | 0.0003        | Var          | %18.75         | Model ağır, val acc çok düşük |
+| 2       | 16         | 32–64–128     | 0.40        | 0.0005        | Var          | **%37.50**     | En iyi Model 3 sonucu |
+| 3       | 16         | 32–64–128     | 0.40        | 0.0003        | Var          | %34.38         | LR’yi düşürmek fayda etmedi |
 
 ---
 
 ## 📌 6. Çalıştırma Talimatları
 
 ```bash
-git clone https://github.com/<kullanici>/CNN_siniflandirma
+git clone https://github.com/ibrahimcerkezoglu/CNN_siniflandirma
 cd CNN_siniflandirma
 pip install tensorflow matplotlib numpy
 jupyter notebook
+
 Ardından ilgili model .ipynb dosyasını çalıştırarak eğitimi başlatabilirsiniz.
 
 📌 7. Sonuç ve Değerlendirme
