@@ -91,7 +91,7 @@ git clone https://github.com/ibrahimcerkezoglu/CNN_siniflandirma
 cd CNN_siniflandirma
 pip install tensorflow matplotlib numpy
 jupyter notebook
-
+```
 ---
 
 Ardından ilgili model .ipynb dosyasını çalıştırarak eğitimi başlatabilirsiniz.
