@@ -39,8 +39,8 @@ Veri seti tamamen **tarafımdan çekilmiş**, özgün görüntülerden oluşmakt
 - Görseller **128×128 piksel** boyutuna yeniden boyutlandırılmıştır
 - Eğitim/Test oranı: **%80 / %20**
 
-Klasör yapısı:
-
+## Klasör yapısı:
+```
 dataset/
 train/
 bardak/
@@ -48,7 +48,7 @@ sise/
 test/
 bardak/
 sise/
-
+```
 ---
 
 ### 📌 4. Modellerin Açıklamaları
